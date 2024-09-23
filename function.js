@@ -71,6 +71,74 @@ function logWhatPresent(x){
 }
 logWhatPresent(log1);
 
+//classes
+const dog = {
+    name: "doggy",
+    leg: 4,
+    speaks: "bhow bhow",
+}
+console.log("animal" + " " + dog["name"] + " " + dog["speaks"])
+
+class Animal{
+    constructor(name, legCount, speaks){
+        this.name = name;
+        this.legCount = legCount;
+        this.speaks = speaks;
+    }
+    speak(){
+        console.log("hi there " + this.speaks);
+    }
+}
+let dog2 = new Animal("dog", 4, "bhow bhow");
+let cat = new Animal("cat", 4, "meow");
+dog2.speak();
+
+//function date time month day etc methods
+function dateMethods() {
+      const currentDate = new Date();
+      console.log("Current Date:", currentDate);
+    
+    //Getting various components of the date
+      console.log("Date:", currentDate.getDate());
+      console.log("Month:", currentDate.getMonth() + 1); // Months are zero-indexed, so adding 1
+      console.log("Year:", currentDate.getFullYear());
+      console.log("Hours:", currentDate.getHours());
+      console.log("Minutes:", currentDate.getMinutes());
+      console.log("Seconds:", currentDate.getSeconds());
+    }
+
+    const currentDate = new Date();
+
+console.log("Time in miliseconds since 1970: ", currentDate.getTime());
+
+const beforeDate = new Date();
+const beforeTimeInMs = beforeDate.getTime();
+calculateSum(1000000000);
+const afterDate = new Date();
+const afterTimeInMs = afterDate.getTime();
+
+console.log(afterTimeInMs - beforeTimeInMs);
+
+function currentTimePrint(){
+  console.log(new Data().getTime());
+
+}
+setInterval(currentTimePrint, 1000);
+
+//JSON 
+
+const users = '{"name": "Jayashree", "age": 19, "gender": "female"}'
+const user = JSON.parse(users) //string will pass to object
+console.log(user["gender"]);
+
+const user2 = {
+  name: "Jayashree",
+  gender: "female",
+}
+user2["name"]
+const finalString = JSON.stringify(user2)
+console.log(finalString["name"]) //undefined will show as it is in object form
+
 //synchronous function
 function findSum(n){
     let sum = 0;
