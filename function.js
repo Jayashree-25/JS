@@ -170,3 +170,4 @@ fs.readFile("a.txt", "utf-8", function(err, data){ //(err,data) = frist get the 
     console.log(data);
 })
 console.log("hi"); //it will run first 
+
