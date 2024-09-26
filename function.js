@@ -164,10 +164,88 @@ setTimeout (findSumTill10, 1000); //find the sum after 1000 millisec = 1sec
 console.log("hello world");
 
 //a.txt
-const fs = require("fs"); //filesystem module
+const fs = require("fs"); //open the file
 
-fs.readFile("a.txt", "utf-8", function(err, data){ //(err,data) = frist get the error arguement
+fs.readFile("a.txt", "utf-8", function(err, data){ //here it checks all the words from the file is going well or not
     console.log(data);
 })
-console.log("hi"); //it will run first 
+console.log("done"); //while it reads the file, done is printed first
 
+//callback functions
+console.log("I'm first");
+
+setTimeout(function(){
+    console.log("me second")
+}, 5000);
+
+setTimeout(function(){
+    console.log("me third")
+}, 10000);
+
+let a = 0; 
+for(let i =0; i<10; i++){
+    a = a+1;
+}
+console.log(a);
+
+//promises
+const fs = require("fs"); 
+function readAndWriteToFile(cb){
+fs.readFile("a.txt", "utf-8", function(err, data){
+    data = data + "jayashree here";
+    fs.writeFile("a.txt",data, function(err){
+        if (err) {
+            console.error("Error writing file:", err);
+            return;
+        }
+        cb();
+    });
+});
+}
+readAndWriteToFile(function(){
+    console.log("updated")
+});
+
+//using promises
+function promisifiedMyOwnSetTimeOut(duration){ 
+    //when promises are declared there should be a return of promises
+    const p = new Promise(function(resolve){ //This line creates a new promise and stores it in the variable p
+        setTimeout(function(){
+            resolve(); //After the time is up, this line calls the resolve function
+        },duration);
+    });
+    return p;
+}
+//async await syntax, promise chaining => callback hell
+const a1 = promisifiedMyOwnSetTimeOut(3000);
+a1.then(function(){ //The .then() method is used to specify what should happen when the promise is fulfilled
+    console.log("am done")
+})
+
+//..<->..//
+function someSync1(){
+    console.log("I am first");
+}
+function someSync2(){
+    console.log("I am second");
+}
+setTimeout(function(){
+    someSync2();
+},1000)
+someSync1();
+//using promise
+function promisefiedMyOwnSetTimeOut(duration){
+    const p = new Promise(function(resolve){
+        setTimeout(function(){
+            resolve();
+        },duration);
+    })
+    return p;
+}
+//async await
+promisefiedMyOwnSetTimeOut(1000).then(function(){
+    console.log("am first");
+    promisefiedMyOwnSetTimeOut(1000).then(function(){
+        console.log("am second"); 
+    });
+})
