@@ -42,3 +42,4 @@ async function main(){ //await is only valid in async function and the top level
     console.log(value);
 }
 main();
+
