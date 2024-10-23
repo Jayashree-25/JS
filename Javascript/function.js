@@ -97,7 +97,7 @@ dog2.speak();
 function dateMethods() {
       const currentDate = new Date();
       console.log("Current Date:", currentDate);
-    
+
     //Getting various components of the date
       console.log("Date:", currentDate.getDate());
       console.log("Month:", currentDate.getMonth() + 1); // Months are zero-indexed, so adding 1
@@ -249,3 +249,72 @@ promisefiedMyOwnSetTimeOut(1000).then(function(){
         console.log("am second"); 
     });
 })
+
+// .......... map,filter,arrow fnc ..........
+//arrow function 
+function sum(a,b){
+    return a + b;
+}
+//this above function can be written as: 
+const sum = (a,b) =>{
+    return a+b;
+}
+
+//given an array, give me back a new array in which every value is multiplied by 2
+const input = [1,2,3,4,5];
+//without map
+const newArr = [];
+for(let i = 0; i<input.length; i++){
+    newArr.push(input[i]*3);
+} 
+console.log(newArr);
+//using map
+function transform(i){
+    return i * 2;
+}
+const sol = input.map(transform);
+console.log(sol);
+
+//other method
+const ans1 = input.map(function(i){
+    return i * 2;
+});
+console.log(ans1);
+
+//create a map function that takes 2 inputs
+//an array and a transform callback function and 
+//transforms the array into a new using the 
+//transformation function
+const map = (arr, transform) => {
+    const transformedArr = [];
+    for(let i = 0; i<arr.length; i++){
+        transformedArr.push(transform(arr[i]));
+    }
+    return transformedArr;
+}
+const numbers = [1,2,3];
+const results = map(numbers, (num) => num*2);
+console.log(results);
+
+// ---------- filter ----------
+// Q-> given an input array, give me back all the even values from it
+
+const arr = [1,2,3,4,5];
+const newArr1 = [];
+for(let i = 0; i<arr.length; i++){
+    if(arr[i]%2 == 0){
+        newArr1.push(arr[i]);
+    }
+}
+console.log(newArr1);
+//using filter
+const array = [1, 2, 3, 4, 5];
+
+const result = array.filter(function (n){
+    if(n% 2 == 0){
+        return true;
+    }else {
+    return false;
+}
+});
+console.log(result);
